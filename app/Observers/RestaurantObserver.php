@@ -50,19 +50,31 @@ class RestaurantObserver
 
     private function createSubscription($restaurant)
     {
-        // Check if a trial package exists and trial status is active (1 or true)
-        $trialPackage = Package::firstWhere('package_type', 'trial');
-        $isTrialActive = $trialPackage && $trialPackage->trial_status == 1;
+        // Try to assign Life Time Free package first
+        $lifetimePackage = Package::firstWhere('package_type', PackageType::LIFETIME);
+        $freePackage = $lifetimePackage ?: Package::firstWhere('package_type', PackageType::FREE);
 
-        // Assign either trial package or default package
-        $package = $isTrialActive ? $trialPackage : Package::firstWhere('package_type', PackageType::DEFAULT);
+        if ($freePackage) {
+            $package = $freePackage;
+            $packageType = $package->package_type->value;
+            $licenseExpire = null; // Lifetime, so no expiry
+        } else {
+            // Check if a trial package exists and trial status is active (1 or true)
+            $trialPackage = Package::firstWhere('package_type', 'trial');
+            $isTrialActive = $trialPackage && $trialPackage->trial_status == 1;
+
+            // Assign either trial package or default package
+            $package = $isTrialActive ? $trialPackage : Package::firstWhere('package_type', PackageType::DEFAULT);
+            $packageType = $isTrialActive ? 'trial' : 'monthly';
+            $licenseExpire = $isTrialActive ? now()->addDays((int)$trialPackage->trial_days) : now()->addMonth();
+        }
 
         // Update restaurant package details
         $restaurant->update([
             'package_id' => $package->id,
-            'package_type' => $isTrialActive ? 'trial' : 'monthly',
-            'trial_ends_at' => $isTrialActive ? now()->addDays((int)$trialPackage->trial_days) : null,
-            'license_expire_on' => $isTrialActive ? now()->addDays((int)$trialPackage->trial_days) : now()->addMonth(),
+            'package_type' => $packageType,
+            'trial_ends_at' => isset($isTrialActive) && $isTrialActive ? now()->addDays((int)$trialPackage->trial_days) : null,
+            'license_expire_on' => $licenseExpire,
             'license_updated_at' => now(),
             'subscription_updated_at' => now(),
         ]);
@@ -76,7 +88,7 @@ class RestaurantObserver
             'quantity' => 1,
             'gateway_name' => 'offline',
             'subscription_status' => 'active',
-            'trial_ends_at' => $isTrialActive ? $restaurant->license_expire_on : null,
+            'trial_ends_at' => isset($isTrialActive) && $isTrialActive ? $restaurant->license_expire_on : null,
             'subscribed_on_date' => $restaurant->license_updated_at,
             'ends_at' => $restaurant->license_expire_on,
             'transaction_id' => strtoupper(str()->random(15)),

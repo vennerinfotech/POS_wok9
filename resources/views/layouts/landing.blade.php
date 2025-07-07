@@ -134,7 +134,7 @@
         </header>
 
         <header class="hidden lg:block z-50 sticky top-0 inset-x-0">
-            <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 sticky top-4 rounded-md mt-2 ">
+            {{-- <nav class="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800 sticky top-4 rounded-md mt-2 ">
                 <div class="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
                     <a href="{{ url('/') }}" class="flex items-center gap-1 app-logo">
                         <img src="{{ global_setting()->logoUrl }}" class="ltr:mr-3 rtl:ml-3 h-6 sm:h-9"
@@ -238,7 +238,7 @@
                         </ul>
                     </div>
                 </div>
-            </nav>
+            </nav> --}}
         </header>
 
         <div class="flex mt-4 overflow-hidden dark:bg-gray-900">
@@ -250,12 +250,13 @@
                     </picture>
                     @yield('content')
                     {{ $slot ?? '' }}
+                    
                 </main>
             </div>
         </div>
     </div>
     @stack('modals')
-    <footer class="p-4 bg-white sm:p-6 dark:bg-gray-800 border-t dark:border-gray-600">
+    {{-- <footer class="p-4 bg-white sm:p-6 dark:bg-gray-800 border-t dark:border-gray-600">
         <div class="mx-auto max-w-screen-xl">
             <div class="sm:flex sm:items-center sm:justify-between flex-wrap gap-4">
                 <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© {{ now()->year }} <a
@@ -329,7 +330,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> --}}
     @livewireScripts
 
     @include('layouts.update-uri')

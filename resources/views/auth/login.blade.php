@@ -54,7 +54,7 @@
 
             </div>
 
-            @if(!module_enabled('Subdomain') && !global_setting()->disable_landing_site)
+            {{-- @if(!module_enabled('Subdomain') && !global_setting()->disable_landing_site)
             <div class="flex items-center justify-center mt-4">
                 <a href="{{ route('home') }}"
                    class="text-sm text-gray-500 underline underline-offset-1">
@@ -62,7 +62,7 @@
                     @lang('auth.goHome')
                 </a>
             </div>
-            @endif
+            @endif --}}
 
         </form>
     </div>
