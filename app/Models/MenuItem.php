@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use Modules\Inventory\Entities\Recipe;
 use App\Models\Menu;
 use App\Models\OrderItem;
 use App\Traits\HasBranch;
@@ -57,7 +57,11 @@ class MenuItem extends BaseModel
     {
         return $this->hasOne(MenuItemTranslation::class)->where('locale', $locale ?? app()->getLocale());
     }
-
+    public function recipes()
+    {
+        return $this->hasMany(Recipe::class, 'menu_item_id');
+    }
+    
     public function getTranslatedValue(string $attribute, ?string $locale = null): string
     {
         $locale = $locale ?? app()->getLocale();

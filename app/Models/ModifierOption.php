@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Modules\Inventory\Entities\Recipe;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,6 +15,10 @@ class ModifierOption extends BaseModel
 
     protected $guarded = ['id'];
 
+    public function recipes()
+{
+    return $this->hasMany(Recipe::class, 'modifier_option_id');
+}
     public function modifierGroup(): BelongsTo
     {
         return $this->belongsTo(ModifierGroup::class, 'modifier_group_id');
