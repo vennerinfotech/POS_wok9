@@ -1,4 +1,4 @@
-<div>
+<div class="today-order-list-dashboard">
     <h1 class="text-xl font-semibold text-gray-900 sm:text-xl dark:text-white my-2">@lang('modules.order.todayOrder')</h1>
 
     <div class="grid grid-cols-1 gap-3 sm:gap-4">

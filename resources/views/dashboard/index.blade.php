@@ -16,7 +16,7 @@
         </div>
     </div>
 
-    
+
 </div>
 
 <x-banner />
@@ -26,7 +26,7 @@
     <div class="sm:col-span-2 p-4">
         <h1 class="text-xl font-semibold text-gray-900 sm:text-xl dark:text-white my-2 px-4">@lang('modules.dashboard.todayStats')</h1>
 
-        <div class="grid w-full grid-cols-1 gap-4 xl:grid-cols-2">
+        <div class="dashboard-Statistics grid w-full grid-cols-1 gap-4 xl:grid-cols-2">
 
             @if (user_can('Show Order'))
             @livewire('dashboard.todayOrderCount')

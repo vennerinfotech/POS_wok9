@@ -37,7 +37,7 @@
           </svg>
       </button>
 
-        <div class="flex gap-2">
+        <div class="top-header-option flex gap-2">
           @if (in_array('Order', restaurant_modules()) && user_can('Show Order') && restaurant()->hide_new_orders == 0)
             @livewire('dashboard.todayOrders')
             @endif

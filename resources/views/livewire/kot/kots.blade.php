@@ -70,7 +70,7 @@
             </div>
         </div>
 
-        <div class="flex flex-col my-4">
+        <div class="KOT-show flex flex-col my-4">
 
             <!-- Card Section -->
             <div class="space-y-4">
