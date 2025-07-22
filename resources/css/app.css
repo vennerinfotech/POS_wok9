@@ -112,9 +112,6 @@
     .today-order-list-dashboard .grid-cols-1{
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-    #theme-toggle{
-        display: none;
-    }
     .top-header-option .lg\:inline-flex{
         font-size: 12px;
     }
