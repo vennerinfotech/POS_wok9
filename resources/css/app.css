@@ -117,4 +117,8 @@
     }
 }
 
-
+@media (min-width: 1200px) {
+    .dashboard-grid .dashboard-Statistics {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+}
