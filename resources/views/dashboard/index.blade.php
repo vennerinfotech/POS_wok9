@@ -21,7 +21,7 @@
 
 <x-banner />
 
-<div class="grid lg:grid-cols-3">
+<div class="dashboard-grid grid lg:grid-cols-2">
 
     <div class="sm:col-span-2 p-4">
         <h1 class="text-xl font-semibold text-gray-900 sm:text-xl dark:text-white my-2 px-4">@lang('modules.dashboard.todayStats')</h1>
@@ -65,12 +65,12 @@
 
     </div>
 
-    <div class="p-4">
+    {{-- <div class="p-4">
         @if (user_can('Show Order'))
         @livewire('dashboard.todayOrderList')
         @endif
 
-    </div>
+    </div> --}}
 </div>
 
 @endsection
