@@ -67,7 +67,7 @@
                             @if ($this->hasModule('Table'))
                             @if(user_can('Show Table'))
                             @livewire('sidebar-dropdown-menu', ['name' => __('menu.tables'), 'link' => route('tables.index'), 'active' => request()->routeIs('tables.index')])
-                            @livewire('sidebar-dropdown-menu', ['name' => __('menu.qrCodes'), 'link' => route('qrcodes.index'), 'active' => request()->routeIs('qrcodes.index')])
+                            {{-- @livewire('sidebar-dropdown-menu', ['name' => __('menu.qrCodes'), 'link' => route('qrcodes.index'), 'active' => request()->routeIs('qrcodes.index')]) --}}
                             @endif
                             @endif
 
