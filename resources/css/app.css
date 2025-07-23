@@ -122,3 +122,9 @@
         grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 }
+
+@media (min-width:768px) and (max-width:802px){
+    .gap-m-0.gap-4{
+        gap: 0;
+    }
+}
