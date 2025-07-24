@@ -13,7 +13,8 @@
 
     @if (isset($footer))
     <div class="flex flex-row justify-end px-6 py-4 bg-gray-100 dark:bg-gray-800 text-end">
-        {{ $footer }}
+        {{-- {{ $footer }} --}}
+        <x-button-cancel  wire:click="$dispatch('hideAddSupplier')" wire:loading.attr="disabled">@lang('app.cancel')</x-button-cancel>
     </div>
     @endif
 </x-modal>

@@ -41,7 +41,7 @@
                                 </td>
 
                                 <td class="py-2.5 px-4 text-sm text-gray-900 whitespace-nowrap dark:text-white inline-flex gap-2 items-center">
-                                    <img src="{{  $item->logoUrl }}" class="h-8" alt="App Logo" />
+                                    {{-- <img src="{{  $item->logoUrl }}" class="h-8" alt="App Logo" /> --}}
                                     <div class="flex flex-col items-start gap-y-1">
                                         <a href="{{ route('superadmin.restaurants.show', $item->hash) }}" wire:navigate class="underline underline-offset-1 font-medium">{{ $item->name }}</a>
 
