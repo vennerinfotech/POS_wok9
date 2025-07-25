@@ -5,10 +5,10 @@
                 <a href="{{ route('shop_restaurant', [$restaurant->hash]) . '?branch=' . $shopBranch->id }}"
                     class="inline-flex items-center app-logo">
                     <img src="{{ $restaurant->logoUrl }}" class="ltr:mr-3 rtl:ml-3 h-6 sm:h-9" alt="App Logo" />
-                    @if ($restaurant->show_logo_text)
+                    {{-- @if ($restaurant->show_logo_text)
                         <span
                             class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">{{ $restaurant->name }}</span>
-                    @endif
+                    @endif --}}
                 </a>
 
                 @livewire('forms.shopSelectBranch', ['restaurant' => $restaurant, 'shopBranch' => $shopBranch])
